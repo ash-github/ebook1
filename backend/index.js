@@ -5,7 +5,7 @@ const path=require("path")
 connectToMongo()
 
 const app=express()
-const port=3000
+const port=8000
 app.use(express.json());
 const _dirname=path.dirname("")
 const buildpath = path.join(_dirname,"../build")
