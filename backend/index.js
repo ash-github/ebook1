@@ -1,12 +1,18 @@
 const connectToMongo=require('./db')
 const express=require('express')
 const cors=require('cors')
+const path=require("path")
 connectToMongo()
 
 const app=express()
 const port=3000
 app.use(express.json());
-app.use(cors());
+const _dirname=path.dirname("")
+const buildpath = path.join(_dirname,"../build")
+app.use(express.static(buildpath));
+app.use(cors({
+    "origin":"*"
+}));
 
 app.use('/api/auth',require('./routes/auth'))
 app.use('/api/notes',require('./routes/notes'))
